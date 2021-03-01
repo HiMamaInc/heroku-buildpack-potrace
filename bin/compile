@@ -11,18 +11,16 @@ echo "-----> Installing potrace"
 cd $1
 
 # download the binary (-O) silently (-s)
-# curl http://potrace.sourceforge.net/download/1.15/potrace-1.15.linux-x86_64.tar.gz -s -O
-# using alternative mirror, sourceforge is down
-curl https://cfhcable.dl.sourceforge.net/project/potrace/1.16/potrace-1.16.tar.gz -s -O
+curl http://potrace.sourceforge.net/download/1.16/potrace-1.16.linux-x86_64.tar.gz -s -O
 
 # make a directory to untar (like unzip) the binary
 mkdir -p vendor/potrace
 
 # untar the binary to the directory we want
-tar -C vendor/potrace -xvf potrace-1.16.tar.gz
+tar -C vendor/potrace -xvf potrace-1.16.linux-x86_64.tar.gz
 
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/000_potrace.sh
-export PATH="/app/vendor/potrace/potrace-1.16/:$PATH"
+export PATH="/app/vendor/potrace/potrace-1.16.linux-x86_64/:$PATH"
 
 EOF
